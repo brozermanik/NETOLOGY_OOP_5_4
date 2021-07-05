@@ -21,6 +21,4 @@ public class EnemyData : MonoBehaviour
         Undead,
         Dragon
     }
-    
-    
 }

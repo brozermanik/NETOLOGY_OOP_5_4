@@ -4,17 +4,23 @@ using UnityEngine;
 
 public class ProjectileData : MonoBehaviour
 {
-    [SerializeField]
-    public float Damage;
-    [SerializeField]
-    public float ProjectileSpeed;
-    [SerializeField]
-    public float Duration;
-
-    public enum ProjectileType
+    public class BaseProjectile
     {
-        Bullet,
-        Arrow,
-        MagicMissile
+        [SerializeField] public static float Damage;
+        [SerializeField] public static float ProjectileSpeed;
+        [SerializeField] public static float Duration;
+
+        public enum ProjectileType
+        {
+            Bullet,
+            Arrow,
+            MagicMissile
+        }
+    }
+
+    public static void FireTheProjectile()
+    {
+        float speed = BaseProjectile.ProjectileSpeed;
+        transform.position += transform.forward * speed * Time.deltaTime;
     }
 }
