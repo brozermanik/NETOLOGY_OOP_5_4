@@ -1,16 +1,17 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-public class ProjectileData : MonoBehaviour
+namespace Netology_5_4
 {
-    public class BaseProjectile
+    public class ProjectileData : MonoBehaviour
     {
-        [SerializeField] public static float Damage;
-        [SerializeField] public static float ProjectileSpeed;
-        [SerializeField] public static float Duration;
-
-        public enum ProjectileType
+        [SerializeField] public float Damage;
+        [SerializeField] public float ProjectileSpeed;
+        [SerializeField] public float Duration;
+        public enum ProjectileType : byte
         {
             Bullet,
             Arrow,

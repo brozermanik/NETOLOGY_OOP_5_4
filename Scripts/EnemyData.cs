@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class EnemyData : MonoBehaviour
+namespace Netology_5_4
 {
-    [SerializeField] public float Health;
-    [SerializeField] public float MoveSpeed;
-    [SerializeField] public float AttackSpeed;
-    [SerializeField] public float AttackRange;
-    
-    public enum EnemyType
+    public class EnemyData : MonoBehaviour
     {
-        Human,
-        Orc,
-        Undead,
-        Dragon
-    }
+        [SerializeField] public float Health;
+        [SerializeField] public float MoveSpeed;
+        [SerializeField] public float AttackSpeed;
+        [SerializeField] public float AttackRange;
+        public enum EnemyType : byte
+        {
+            Human,
+            Orc,
+            Undead,
+            Dragon
+        }
+    }    
 }
+
