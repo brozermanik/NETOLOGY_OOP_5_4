@@ -7,13 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     public GameObject _projectile;
     private List<GameObject> _projectiles;
-
     private List<ProjectileData.BaseProjectile> firedProjectiles = new List<ProjectileData.BaseProjectile>();
-
-    public void AddProjectile(BaseProjectile data)
-    {
-        firedProjectiles.Add(data);
-    }
 
     void Update()
     {
@@ -25,18 +19,10 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator ShootBullets()
     {
-        Instantiate(_projectile, transform.position, transform.rotation);
+        //GameObject shootProjectile = Instantiate(_projectile, transform.position, transform.rotation);
+        GameObject shootProjectile = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        shootProjectile.AddComponent<Rigidbody>().AddRelativeForce(30,0,0);
+        transform.position += transform.forward * 30 * Time.deltaTime;
         yield return new WaitForSeconds(3f);
-    }
-    
-    
-
-    static ProjectileData.BaseProjectile CreateProjectile()
-    {
-        float tempDamage = ProjectileData.BaseProjectile.Damage;
-        float tempSpeed = ProjectileData.BaseProjectile.ProjectileSpeed;
-        float tempDuration = ProjectileData.BaseProjectile.Duration;
-        ProjectileData.FireTheProjectile();
-        return null;
     }
 }

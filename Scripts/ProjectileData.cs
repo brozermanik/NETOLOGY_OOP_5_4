@@ -17,10 +17,4 @@ public class ProjectileData : MonoBehaviour
             MagicMissile
         }
     }
-
-    public static void FireTheProjectile()
-    {
-        float speed = BaseProjectile.ProjectileSpeed;
-        transform.position += transform.forward * speed * Time.deltaTime;
-    }
 }
