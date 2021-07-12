@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
-namespace Netology_5_4
+public class ProjectileData : MonoBehaviour
 {
-    public class ProjectileData : MonoBehaviour
+    // Start is called before the first frame update
+    [Serializable]
+    public struct BasicProjectile
     {
-        [SerializeField] public float Damage;
-        [SerializeField] public float ProjectileSpeed;
-        [SerializeField] public float Duration;
-        public enum ProjectileType : byte
-        {
-            Bullet,
-            Arrow,
-            MagicMissile
-        }
+        public float Damage;
+        public float Speed;
+        public float Duration;
+        public enum Type{bullet,arrow,magic};
+    }
+
+    void Update()
+    {
+        transform.position += Vector3.forward * Time.deltaTime * 5;
     }
 }
