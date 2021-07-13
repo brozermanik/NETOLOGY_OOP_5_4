@@ -1,23 +1,35 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MyGame;
 
 public class PlayerController : MonoBehaviour
 {
-    public static List<ProjectileData.BasicProjectile> allMyProjectiles = new List<ProjectileData.BasicProjectile>();
-    ProjectileData.BasicProjectile shot = new ProjectileData.BasicProjectile();
+    public List<GameObject> allMyProjectiles = new List<GameObject>();
+    public bool isMyCoroutineStarted = false;
+
     // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            allMyProjectiles.Add(shot);
-            foreach (var i in allMyProjectiles)
+            isMyCoroutineStarted = true;
+            if (isMyCoroutineStarted)
             {
-                GameObject shots = Instantiate(GameObject.CreatePrimitive(PrimitiveType.Sphere), transform.position, transform.rotation);
-                shots.transform.position += Vector3.forward * Time.deltaTime * 5;
+                StartCoroutine("CreateBody");
             }
         }
-        
+        foreach (var ap in allMyProjectiles)
+        {
+            ap.transform.position += Vector3.forward * Time.deltaTime;
+        }
+    }
+
+    public IEnumerator CreateBody()
+    {
+        GameObject bullet = GameObject. CreatePrimitive(PrimitiveType.Sphere);
+        allMyProjectiles.Add(bullet);
+
+        yield return isMyCoroutineStarted = false;
     }
 }
